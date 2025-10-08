@@ -1,15 +1,14 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Helmet } from 'react-helmet-async'
+import { PaginationWrapper } from '@/components/pagination'
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { ArrowRight, Search, X } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
+import { OrderTableFilters } from './order-table-filters'
+import { OrderTableRow } from './order-table-row'
 
 export default function Orders() {
   return (
@@ -17,72 +16,31 @@ export default function Orders() {
       <Helmet title="Pedidos" />
       <div className="flex flex-col gap-4">
         <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
-      </div>
-      <div className="space-y-2.5">
-        <form className="flex items-center gap-2">
-          <span className="text-sm font-semibold">Filtros:</span>
-          <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
-        </form>
+        <div className="space-y-2.5">
+          <OrderTableFilters />
 
-        <div className="border rounded-md">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[64px]"></TableHead>
-                <TableHead className="w-[140px]">Identificador</TableHead>
-                <TableHead className="w-[180px]">Realizado há</TableHead>
-                <TableHead className="w-[140px]">Status</TableHead>
-                <TableHead>Cliente</TableHead>
-                <TableHead className="w-[140px]">Total do pedido</TableHead>
-                <TableHead className="w-[164px]"></TableHead>
-                <TableHead className="w-[132px]"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {Array.from({ length: 10 }).map((_, i) => {
-                return (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <Button variant="outline" size="icon">
-                        <Search />
-                        <span className="sr-only">Detalhes do pedido</span>
-                      </Button>
-                    </TableCell>
-                    <TableCell className="font-mono text-xs font-medium">
-                      9db2eed3-aa06-31fe7f01513d
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      há 15 minutos
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-                        <span className="font-medium text-muted-foreground">
-                          Pendente
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      Eduardo Ronchi de Araujo
-                    </TableCell>
-                    <TableCell className="font-medium">R$ 149,90</TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        <ArrowRight className="h-2 w-2 mr-2" />
-                        Aprovar
-                      </Button>
-                    </TableCell>
-                    <TableCell>
-                      <Button variant="destructive" size="sm">
-                        <X className="h-2 w-2 mr-2" />
-                        Cancelar
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
+          <div className="border rounded-md">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[64px]"></TableHead>
+                  <TableHead className="w-[140px]">Identificador</TableHead>
+                  <TableHead className="w-[180px]">Realizado há</TableHead>
+                  <TableHead className="w-[140px]">Status</TableHead>
+                  <TableHead>Cliente</TableHead>
+                  <TableHead className="w-[140px]">Total do pedido</TableHead>
+                  <TableHead className="w-[164px]"></TableHead>
+                  <TableHead className="w-[132px]"></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {Array.from({ length: 10 }).map((_, i) => {
+                  return <OrderTableRow key={i} />
+                })}
+              </TableBody>
+            </Table>
+          </div>
+          <PaginationWrapper pageIndex={0} totalCount={105} perPage={10} />
         </div>
       </div>
     </>
