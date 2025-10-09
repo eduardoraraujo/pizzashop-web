@@ -1,11 +1,9 @@
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationFirst,
   PaginationItem,
   PaginationLast,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
@@ -40,12 +38,7 @@ export function PaginationWrapper({
           <PaginationItem>
             <PaginationPrevious href="#" />
           </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#"></PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+
           <PaginationItem>
             <PaginationNext href="#" />
           </PaginationItem>

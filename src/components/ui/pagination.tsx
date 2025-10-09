@@ -1,3 +1,5 @@
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -6,8 +8,6 @@ import {
   MoreHorizontalIcon,
 } from 'lucide-react'
 import * as React from 'react'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
@@ -15,7 +15,7 @@ function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn('flex items-center gap-2', className)}
+      className={cn('flex items-center gap-4', className)}
       {...props}
     />
   )
@@ -28,7 +28,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn('flex flex-row items-center gap-1', className)}
+      className={cn('flex flex-row items-center gap-2', className)}
       {...props}
     />
   )
@@ -56,7 +56,7 @@ function PaginationLink({
       data-active={isActive}
       className={cn(
         buttonVariants({
-          variant: isActive ? 'outline' : 'ghost',
+          variant: isActive ? 'secondary' : 'outline',
           size,
         }),
         className,
@@ -73,12 +73,11 @@ function PaginationPrevious({
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      size="default"
+      size="pagination"
       className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
       {...props}
     >
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Anterior</span>
     </PaginationLink>
   )
 }
@@ -90,11 +89,10 @@ function PaginationNext({
   return (
     <PaginationLink
       aria-label="Go to next page"
-      size="default"
+      size="pagination"
       className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
       {...props}
     >
-      <span className="hidden sm:block">Próximo</span>
       <ChevronRightIcon />
     </PaginationLink>
   )
@@ -107,7 +105,7 @@ function PaginationLast({
   return (
     <PaginationLink
       aria-label="Go to last page"
-      size="default"
+      size="pagination"
       className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
       {...props}
     >
@@ -123,7 +121,7 @@ function PaginationFirst({
   return (
     <PaginationLink
       aria-label="Go to first page"
-      size="default"
+      size="pagination"
       className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
       {...props}
     >
